@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SuperMarket} from '../supermarket'
 import {SUPERMARKETS} from '../supermarkets_list'
+import {SupermarketService} from '../supermarket.service';
 
 @Component({
   selector: 'app-supermarkets',
@@ -9,12 +10,18 @@ import {SUPERMARKETS} from '../supermarkets_list'
 })
 export class SupermarketsComponent implements OnInit {
 
-  supermarkets = SUPERMARKETS;
+  supermarkets : SuperMarket [];
   selectedSuperMarket: SuperMarket;
 
-  constructor() { }
+  constructor(private supermarketService : SupermarketService) { }
 
   ngOnInit() {
+    this.getSupermarkets()
+  }
+
+  getSupermarkets(): void {
+    this.supermarketService.getSuperMarkets()
+        .subscribe (supermarkets => this.supermarkets = supermarkets)
   }
 
   onSelect(supermarket: SuperMarket): void {

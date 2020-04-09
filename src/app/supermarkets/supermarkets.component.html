@@ -7,9 +7,4 @@
   </li>
 </ul>
 
-<div *ngIf="selectedSuperMarket">
-
-  <h2>{{selectedSuperMarket.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{selectedSuperMarket.id}}</div>
-
-</div>
+<app-supermakert-availability [supermarket]="selectedSuperMarket"></app-supermakert-availability>
