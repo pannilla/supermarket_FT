@@ -13,14 +13,11 @@ export class SupermarketService {
   constructor(private messageService: MessageService) { }
 
   getSuperMarkets() : Observable <SuperMarket[]>{
-
-    this.messageService.add('MessageService: fetched supermarkets');
     return of(SUPERMARKETS);
   }
 
   getSuperMarket(id: number) : Observable <SuperMarket>{
-  
-    this.messageService.add('MessageService: fetched supermarket id=${id}');
+
     return of(SUPERMARKETS.find (supermarket => supermarket.id == id));
   }
 

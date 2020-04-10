@@ -10,6 +10,8 @@ import {FirebaseService} from '../firebase.service'
   templateUrl: './supermakert-availability.component.html',
   styleUrls: ['./supermakert-availability.component.css']
 })
+
+
 export class SupermakertAvailabilityComponent implements OnInit {
   @Input() supermarket: SuperMarket;
 
@@ -23,7 +25,7 @@ export class SupermakertAvailabilityComponent implements OnInit {
   ngOnInit() {
     this.getSuperMarket()
     this.firebaseService.getAvailability()
-    .subscribe(result => {
+      .subscribe(result => {
       this.items = result;
     })
   }
@@ -37,7 +39,6 @@ export class SupermakertAvailabilityComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
-
 
 
 }

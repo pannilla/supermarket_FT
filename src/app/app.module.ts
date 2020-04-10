@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { APP_BASE_HREF } from '@angular/common';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 
@@ -16,11 +17,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
-  imports:      [ AngularFireModule.initializeApp(environment.firebase),
- 	AngularFirestoreModule,BrowserModule, FormsModule, AppRoutingModule],
+  imports:      [ AngularFireModule.initializeApp(environment.firebase),AngularFirestoreModule,
+  AngularFireDatabaseModule,BrowserModule, FormsModule, AppRoutingModule],
   declarations: [ AppComponent, SupermarketsComponent, SupermakertAvailabilityComponent, MessagesComponent, DashboardComponent ],
   bootstrap:    [ AppComponent ],
-  providers: [SupermarketService, MessageService,{provide: APP_BASE_HREF, useValue: '/'}]
+  providers: [SupermarketService, AngularFirestoreModule, MessageService,{provide: APP_BASE_HREF, useValue: '/'}]
 
 })
 export class AppModule { }
