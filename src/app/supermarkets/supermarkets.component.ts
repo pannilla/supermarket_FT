@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SuperMarket} from '../supermarket'
 import {SUPERMARKETS} from '../supermarkets_list'
 import {SupermarketService} from '../supermarket.service';
+import {MessageService} from '../message.service';
 
 @Component({
   selector: 'app-supermarkets',
@@ -13,7 +14,7 @@ export class SupermarketsComponent implements OnInit {
   supermarkets : SuperMarket [];
   selectedSuperMarket: SuperMarket;
 
-  constructor(private supermarketService : SupermarketService) { }
+  constructor(private supermarketService : SupermarketService, private messageService: MessageService) { }
 
   ngOnInit() {
     this.getSupermarkets()
@@ -25,6 +26,7 @@ export class SupermarketsComponent implements OnInit {
   }
 
   onSelect(supermarket: SuperMarket): void {
+    this.messageService.add(`SuperMarketService: Selected supermarket id=${supermarket.id}`);
     this.selectedSuperMarket = supermarket;
   }
 

@@ -1,10 +1,10 @@
 <h2>SuperMarkets</h2>
 <ul class="supermarkets">
-  <li *ngFor="let supermarket of supermarkets"
-    [class.selected]="supermarket === selectedSuperMarket"
-    (click)="onSelect(supermarket)">
-    <span class="badge">{{supermarket.id}}</span> {{supermarket.name}}
+  <li *ngFor="let supermarket of supermarkets">
+    <a routerLink="/detail/{{supermarket.id}}">
+      <span class="badge">{{supermarket.id}}</span> {{supermarket.name}}
+    </a>
   </li>
 </ul>
 
-<app-supermakert-availability [supermarket]="selectedSuperMarket"></app-supermakert-availability>
+

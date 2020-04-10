@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { SuperMarket } from './supermarket';
 import { SUPERMARKETS } from './supermarkets_list';
 import { Observable, of } from 'rxjs';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,10 +10,20 @@ import { Observable, of } from 'rxjs';
 
 export class SupermarketService {
 
-  constructor() { }
+  constructor(private messageService: MessageService) { }
 
-  getSuperMarkets() : Observable<SuperMarket[]>{
+  getSuperMarkets() : Observable <SuperMarket[]>{
+
+    this.messageService.add('MessageService: fetched supermarkets');
     return of(SUPERMARKETS);
   }
+
+  getSuperMarket(id: number) : Observable <SuperMarket>{
+  
+    this.messageService.add('MessageService: fetched supermarket id=${id}');
+    return of(SUPERMARKETS.find (supermarket => supermarket.id == id));
+  }
+
+
 
 }
