@@ -17,13 +17,10 @@ export class FirebaseService {
   availabilities: Observable<any[]>;
 
   constructor(db: AngularFireDatabase) {
-    this.itemsRef = db.list('orari');
+    this.itemsRef = db.list('supermarkets/orari');
     this.itemsRef.snapshotChanges(['child_added'])
   .subscribe(actions => {
     actions.forEach(action => {
-      console.log(action.type);
-      console.log(action.key);
-      console.log(action.payload.val());
     });
   });
     // Use snapshotChanges().map() to store the key

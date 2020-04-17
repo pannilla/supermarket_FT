@@ -1,9 +1,31 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Pipe, PipeDecorator } from '@angular/core';
 import { SuperMarket } from '../supermarket'
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import {SupermarketService} from '../supermarket.service';
 import {FirebaseService} from '../firebase.service'
+
+
+@Pipe({
+   name: 'keyValueFilter'
+})
+
+export class keyValueFilterPipe {
+  constructor(  private route: ActivatedRoute){}
+  
+  transform(value) {
+    let result = [];
+    const id = +this.route.snapshot.paramMap.get('id');
+
+    for (var [key, value] of value.entries()) {
+        if (key == id){
+          result.push({ key, value: value[key] });
+        }
+    }
+    return result;
+  }
+
+}
 
 @Component({
   selector: 'app-supermakert-availability',
@@ -12,22 +34,30 @@ import {FirebaseService} from '../firebase.service'
 })
 
 
+
 export class SupermakertAvailabilityComponent implements OnInit {
   @Input() supermarket: SuperMarket;
 
-  items: Array<any>;
+  items: any[]=[];
+  times: {};
 
   constructor(  private route: ActivatedRoute,
   private supermarketService: SupermarketService, public firebaseService: FirebaseService,
-  private location: Location) { }
+  private location: Location) {
+       
+   }
 
 
   ngOnInit() {
     this.getSuperMarket()
     this.firebaseService.getAvailability()
       .subscribe(result => {
-      this.items = result;
+    this.items = result;
+    this.getTimes();
     })
+
+    
+
   }
 
   getSuperMarket() : void {
@@ -36,9 +66,40 @@ export class SupermakertAvailabilityComponent implements OnInit {
     .subscribe(supermarket => this.supermarket = supermarket);
 }
 
+getTimes(): void{
+  const id = +this.route.snapshot.paramMap.get('id');
+  var destinationObj = {};
+  let selected = {};
+
+  
+  Object.assign(destinationObj, this.items);
+
+  
+  let keys_test = Object.keys(destinationObj);
+  let supermarkets= [];
+
+  for (let prop of keys_test) { 
+      supermarkets.push(destinationObj[prop]);
+  }
+
+
+  for (let market of supermarkets){
+    if (market.key == id.toString()){
+      selected = market.value;
+      console.log(selected);
+    }
+
+  }
+
+  this.times = selected
+
+
+}
+
   goBack(): void {
     this.location.back();
   }
+
 
 
 }

@@ -2,9 +2,29 @@
   <h2>{{supermarket.name | uppercase}} Availability</h2>
  
   <div>
-    <li *ngFor="let item of items">
-      {{item.key}}:{{item.value}}
-  </li>
+    <div *ngFor="let item of items| keyvalue">
+    <p></p>
+      <div  *ngFor="let i of item.value| keyvalue">
+              <table border=1  *ngFor="let time of i.value| keyvalue">
+                <thead>
+                  <tr>
+                  <th *ngFor="let t of time.value| keyvalue">{{t.key}}
+
+                  </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <td *ngFor="let t of time.value | keyvalue">
+                
+                {{ t.value|json }}
+              
+                  </td>
+                </tbody>
+              </table>
+  
+       </div>
+    </div> 
+
   </div>
   <button (click)="goBack()">go back</button>
 </div>
