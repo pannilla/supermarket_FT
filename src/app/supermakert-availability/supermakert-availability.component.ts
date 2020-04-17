@@ -77,21 +77,24 @@ getTimes(): void{
   
   let keys_test = Object.keys(destinationObj);
   let supermarkets= [];
+  let keys = [];
 
   for (let prop of keys_test) { 
       supermarkets.push(destinationObj[prop]);
   }
 
-
   for (let market of supermarkets){
     if (market.key == id.toString()){
       selected = market.value;
       console.log(selected);
+      keys = Object.keys(selected);
+      console.log(keys);
     }
 
   }
 
-  this.times = selected
+  this.times = selected[keys[0]]
+  console.log(this.times);
 
 
 }
