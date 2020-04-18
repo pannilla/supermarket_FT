@@ -19,6 +19,7 @@ export class SupermakertAvailabilityComponent implements OnInit {
 
   items: any[]=[];
   times: {};
+  hours: any[]= [];
 
   constructor(  private route: ActivatedRoute,
   private supermarketService: SupermarketService, public firebaseService: FirebaseService,
@@ -71,32 +72,34 @@ getTimes(): void{
   }
 
 
-let day_hours :{} = {};
-
   this.times = selected[keys[0]];
   console.log(this.times);
+
+
+}
+
+getHoursHeader():void{
   let keyshour =  Object.keys(this.times);
   
   let hours  = [] ;
   for (let i = 0; i < keyshour.length; i++) {
       let day = [];
       day = this.times[keyshour[i]];
-      console.log(day);
       
       let result = {};
       if (i == 0){
         for (let j = 0; j < day.length; j++ ){
         result= day[j];
         let key = Object.keys(result);
-        console.log(key);
         hours.push(result);
+        break;
       }
 
       }
       
   }
 
-  console.log(hours);
+  this.hours = hours;
 
 }
 
