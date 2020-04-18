@@ -34,6 +34,7 @@ export class SupermakertAvailabilityComponent implements OnInit {
       .subscribe(result => {
     this.items = result;
     this.getTimes();
+    this.getHoursHeader();
     })
 
     
@@ -73,8 +74,6 @@ getTimes(): void{
 
 
   this.times = selected[keys[0]];
-  console.log(this.times);
-
 
 }
 
@@ -91,8 +90,7 @@ getHoursHeader():void{
         for (let j = 0; j < day.length; j++ ){
         result= day[j];
         let key = Object.keys(result);
-        hours.push(result);
-        break;
+        hours.push(key);
       }
 
       }

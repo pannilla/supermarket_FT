@@ -6,23 +6,33 @@
       <table>
         <thead>
           <tr>
-          <th *ngFor="let time of hours | keyvalue">
-           {{time.value}}
+            <th></th>
+          <th *ngFor="let time of times | keyvalue">
+           {{time.key}}
           </th>
           </tr>
         </thead>
         <tbody>
-          <td *ngFor="let single of times| keyvalue let j = index;">
-          
+          <td >
+            <table *ngFor="let hour of hours">
+              <td>
+            <tr  >
+              {{hour}}
+              </tr>
+            </td>
+            </table>
+          </td>
+
+          <td *ngFor="let single of times| keyvalue">
            <table  *ngFor="let s of single.value| keyvalue">
-             
-             <td *ngFor="let ora of s.value| keyvalue"  style="border-bottom: 1px solid #ccc">
-        
-           &nbsp;
-
-             </td>
-
-          </table>
+             <td *ngFor = "let ora of s.value  | keyvalue">
+               <tr>
+              {{ora.value}}
+              </tr>
+              </td>
+              </table>
+          </td>
+          
         </tbody>
       </table>
 
