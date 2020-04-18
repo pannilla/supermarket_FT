@@ -1,31 +1,10 @@
-import { Component, OnInit, Input, Pipe, PipeDecorator } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { SuperMarket } from '../supermarket'
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import {SupermarketService} from '../supermarket.service';
 import {FirebaseService} from '../firebase.service'
 
-
-@Pipe({
-   name: 'keyValueFilter'
-})
-
-export class keyValueFilterPipe {
-  constructor(  private route: ActivatedRoute){}
-  
-  transform(value) {
-    let result = [];
-    const id = +this.route.snapshot.paramMap.get('id');
-
-    for (var [key, value] of value.entries()) {
-        if (key == id){
-          result.push({ key, value: value[key] });
-        }
-    }
-    return result;
-  }
-
-}
 
 @Component({
   selector: 'app-supermakert-availability',
@@ -86,16 +65,38 @@ getTimes(): void{
   for (let market of supermarkets){
     if (market.key == id.toString()){
       selected = market.value;
-      console.log(selected);
       keys = Object.keys(selected);
-      console.log(keys);
     }
 
   }
 
-  this.times = selected[keys[0]]
-  console.log(this.times);
 
+let day_hours :{} = {};
+
+  this.times = selected[keys[0]];
+  console.log(this.times);
+  let keyshour =  Object.keys(this.times);
+  
+  let hours  = [] ;
+  for (let i = 0; i < keyshour.length; i++) {
+      let day = [];
+      day = this.times[keyshour[i]];
+      console.log(day);
+      
+      let result = {};
+      if (i == 0){
+        for (let j = 0; j < day.length; j++ ){
+        result= day[j];
+        let key = Object.keys(result);
+        console.log(key);
+        hours.push(result);
+      }
+
+      }
+      
+  }
+
+  console.log(hours);
 
 }
 
