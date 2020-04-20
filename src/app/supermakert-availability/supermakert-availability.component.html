@@ -1,9 +1,9 @@
 <div *ngIf="supermarket">
-  <h2>{{supermarket.name | uppercase}} Availability</h2>
+  <h2>{{supermarket.name | uppercase}}</h2>
  
   <div>
   
-      <table>
+      <table class="features-table" >
         <thead>
           <tr>
             <th></th>
@@ -14,23 +14,28 @@
         </thead>
         <tbody>
           <td >
-            <table *ngFor="let hour of hours">
-              <td>
-            <tr  >
+            <tr *ngFor="let hour of hours" >
               {{hour}}
               </tr>
-            </td>
-            </table>
           </td>
 
-          <td *ngFor="let single of times| keyvalue">
-           <table  *ngFor="let s of single.value| keyvalue">
-             <td *ngFor = "let ora of s.value  | keyvalue">
-               <tr>
-              {{ora.value}}
+          <td *ngFor="let single of times| keyvalue; index as i">
+             <tr *ngFor = "let ora of times[single.key] | mapToIterable:'value'">
+              {{ora | mapToIterable:'value'}}
+                  <ng-container
+      *ngIf="(ora | mapToIterable:'value') == 'N'; then userloggedIn; else userloggedOut">
+    </ng-container>
+
+    <ng-template #userloggedIn>
+      <img src="/check-icons.png" width="16" height="16" alt="cross">
+    </ng-template>
+
+    <ng-template #userloggedOut>
+     
+    </ng-template>
+      
               </tr>
-              </td>
-              </table>
+
           </td>
           
         </tbody>

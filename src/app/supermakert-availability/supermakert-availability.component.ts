@@ -3,7 +3,9 @@ import { SuperMarket } from '../supermarket'
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import {SupermarketService} from '../supermarket.service';
-import {FirebaseService} from '../firebase.service'
+import {FirebaseService} from '../firebase.service';
+import {MapToIterablePipe} from '../map-to-iterable'
+
 
 
 @Component({
@@ -23,7 +25,7 @@ export class SupermakertAvailabilityComponent implements OnInit {
 
   constructor(  private route: ActivatedRoute,
   private supermarketService: SupermarketService, public firebaseService: FirebaseService,
-  private location: Location) {
+  private location: Location, private mapToIterable: MapToIterablePipe ) {
        
    }
 

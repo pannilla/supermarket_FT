@@ -15,13 +15,14 @@ import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {MapToIterablePipe} from './map-to-iterable'
 
 @NgModule({
   imports:      [ AngularFireModule.initializeApp(environment.firebase),AngularFirestoreModule,
   AngularFireDatabaseModule,BrowserModule, FormsModule, AppRoutingModule],
-  declarations: [ AppComponent, SupermarketsComponent, SupermakertAvailabilityComponent, MessagesComponent, DashboardComponent ],
+  declarations: [ AppComponent, SupermarketsComponent, SupermakertAvailabilityComponent, MessagesComponent, DashboardComponent, MapToIterablePipe],
   bootstrap:    [ AppComponent ],
-  providers: [SupermarketService, AngularFirestoreModule, MessageService,{provide: APP_BASE_HREF, useValue: '/'}]
+  providers: [SupermarketService, AngularFirestoreModule, MessageService,{provide: APP_BASE_HREF, useValue: '/'}, MapToIterablePipe]
 
 })
 export class AppModule { }

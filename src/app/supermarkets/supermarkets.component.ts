@@ -3,6 +3,7 @@ import {SuperMarket} from '../supermarket'
 import {SUPERMARKETS} from '../supermarkets_list'
 import {SupermarketService} from '../supermarket.service';
 import {MessageService} from '../message.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-supermarkets',
@@ -14,7 +15,7 @@ export class SupermarketsComponent implements OnInit {
   supermarkets : SuperMarket [];
   selectedSuperMarket: SuperMarket;
 
-  constructor(private supermarketService : SupermarketService, private messageService: MessageService) { }
+  constructor(private supermarketService : SupermarketService, private messageService: MessageService,private location: Location ) { }
 
   ngOnInit() {
     this.getSupermarkets()
@@ -28,6 +29,10 @@ export class SupermarketsComponent implements OnInit {
   onSelect(supermarket: SuperMarket): void {
     this.messageService.add(`SuperMarketService: Selected supermarket id=${supermarket.id}`);
     this.selectedSuperMarket = supermarket;
+  }
+
+   goBack(): void {
+    this.location.back();
   }
 
 }

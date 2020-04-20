@@ -19,6 +19,6 @@ export class DashboardComponent implements OnInit {
 
   getSupermarkets(): void {
     this.supermarketService.getSuperMarkets()
-      .subscribe(supermarkets => this.supermarkets = supermarkets.slice(1, 5));
+      .subscribe(supermarkets => this.supermarkets = supermarkets.slice(0, 5));
   }
 }

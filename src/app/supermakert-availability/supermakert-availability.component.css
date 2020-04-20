@@ -30,128 +30,59 @@ button:disabled {
   cursor: auto;
 }
 
+h2{
+  font: bold 1.3em 'trebuchet MS', 'Lucida Sans', Arial;
+  text-align: center;
+}
+
 /*Band Style Calendar*/
 
-.activeDay {
-      background-color: #fff;
-      color: #39b54a;
- }
- 
- .notActive {
-      background-color: #fff;
-      color: #888;
- }
-    
- table {
-  font-family: FuturaStd-Book;
+.features-table {
+  width: 100%;
+  margin: 0 auto;
+  border-collapse: separate;
   border-spacing: 0;
-  border-collapse: separate;
-  table-layout: fixed;
-}
-table thead tr th {
-  background: #41b54f;
-  color: #ffffff;
-  padding: 0.5em;
-  overflow: hidden;
-}
-table thead tr th:first-child {
-  border-radius: 3px 0 0 0;
-}
-table thead tr th:last-child {
-  border-radius: 0 3px 0 0;
-}
-table thead tr th .day {
-  display: block;
-  font-size: 1.2em;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  margin: 0 auto 5px;
-  padding: 5px;
-  line-height: 1.8;
-}
-table thead tr th .day.active {
-  background: #d1d5db;
-  color: #626e7e;
-}
-table thead tr th .short {
-  display: none;
-}
-table thead tr th i {
-  vertical-align: middle;
-  font-size: 2em;
-}
-table tbody tr {
-  background: #f5f5f5;
-}
-table tbody tr:nth-child(odd) {
-  background: #f5f5f5;
+  text-shadow: 0 1px 0 #fff;
+  color: #2a2a2a;
+  background: #fafafa;  
+  background-image: linear-gradient(top, #fff, #eaeaea, #fff);
 }
 
-
-table tbody tr td {
+.features-table td {
+  height: 50px;
+  line-height: 50px;
+  padding: 0 20px;
+  border-bottom: 1px solid #cdcdcd;
+  box-shadow: 0 1px 0 white;
+  white-space: nowrap;
   text-align: center;
-  vertical-align: middle;
-  position: relative;
-  cursor: pointer;
-  background-color: #fff;
-  color: #888;
 }
 
-table tbody tr td.hour {
-  font-size: 0.8em;
-  padding: 0;
-  color: #626e7e;
-  background: #fff;
-  border-collapse: separate;
-  min-width: 100px;
-  cursor: default;
-}
-table tbody tr td.hour span {
-  display: block;
-}
-@media (max-width: 60em) {
-  
-  table thead tr th .short {
-    display: block;
-  }
-  
-}
-@media (max-width: 27em) {
-  table thead tr th {
-    font-size: 65%;
-  }
-  
-  table thead tr th .day {
-    display: block;
-    font-size: 0.4em;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    margin: 0 auto 5px;
-    padding: 5px;
-  }
-  
-  table thead tr th .day.active {
-    background: #d1d5db;
-    color: #626e7e;
-  }  
-
-  .glyphicon-remove {
-    
-    box-sizing: border-box;
+/*Body*/
+.features-table tbody td {
+  text-align: center;
+  font: normal 12px Verdana, Arial, Helvetica;
+  width: auto;
 }
 
-.glyphicon {
-    position: relative;
-    top: 1px;
-    display: inline-block;
-    font-family: 'Glyphicons Halflings';
-    font-style: normal;
-    font-weight: normal;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+.features-table tbody td:first-child {
+  background: rgba(160, 160, 160, 0.157);
+  text-align: left;
 }
 
+.features-table td {
+  background: #efefef;
+  background: rgba(138, 228, 175, 0.205);
+  border-right: 1px solid white;
 }
+
+
+/*Header*/
+.features-table thead th {
+  font: bold 1.3em 'trebuchet MS', 'Lucida Sans', Arial;  
+  border-radius: 5px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top: 1px solid #7e7e7e7a; 
+}
+
