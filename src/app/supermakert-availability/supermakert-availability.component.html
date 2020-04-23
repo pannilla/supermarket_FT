@@ -1,7 +1,8 @@
 <div *ngIf="supermarket">
+  <nav><a routerLink="/dashboard">SuperMarkets List</a></nav>
   <h2>{{supermarket.name | uppercase}}</h2>
  
-  <div>
+  <div style= "text-align: left; max-width:300px;">
   
       <table class="features-table" >
         <thead>
@@ -21,17 +22,17 @@
 
           <td *ngFor="let single of times| keyvalue; index as i">
              <tr *ngFor = "let ora of times[single.key] | mapToIterable:'value'">
-              {{ora | mapToIterable:'value'}}
+
                   <ng-container
       *ngIf="(ora | mapToIterable:'value') == 'N'; then userloggedIn; else userloggedOut">
     </ng-container>
 
     <ng-template #userloggedIn>
-      <img src="/check-icons.png" width="16" height="16" alt="cross">
+      <img src="https://github.com/pannilla/supermarket_FT/blob/master/src/app/supermakert-availability/cross.png?raw=true" >
     </ng-template>
 
     <ng-template #userloggedOut>
-     
+     <img src="https://github.com/pannilla/supermarket_FT/blob/master/src/app/supermakert-availability/check.png?raw=true"  >
     </ng-template>
       
               </tr>
@@ -42,5 +43,5 @@
       </table>
 
   </div>
-  <button (click)="goBack()">go back</button>
+  
 </div>

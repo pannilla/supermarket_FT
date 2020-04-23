@@ -32,13 +32,14 @@ button:disabled {
 
 h2{
   font: bold 1.3em 'trebuchet MS', 'Lucida Sans', Arial;
-  text-align: center;
+  text-align: left;
 }
 
 /*Band Style Calendar*/
 
 .features-table {
   width: 100%;
+  text-align: left;
   margin: 0 auto;
   border-collapse: separate;
   border-spacing: 0;
@@ -51,7 +52,6 @@ h2{
 .features-table td {
   height: 50px;
   line-height: 50px;
-  padding: 0 20px;
   border-bottom: 1px solid #cdcdcd;
   box-shadow: 0 1px 0 white;
   white-space: nowrap;
@@ -70,6 +70,16 @@ h2{
   text-align: left;
 }
 
+
+.features-table tbody tr{
+  margin: 5px;
+  height: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
 .features-table td {
   background: #efefef;
   background: rgba(138, 228, 175, 0.205);
@@ -84,5 +94,28 @@ h2{
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   border-top: 1px solid #7e7e7e7a; 
+  text-align: center;
+  width: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
 }
 
+nav a {
+  padding: 5px 10px;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-block;
+  background-color: #eee;
+  border-radius: 4px;
+}
+nav a:visited, a:link {
+  color: #334953;
+}
+nav a:hover {
+  color: #039be5;
+  background-color: #cfd8dc;
+}
+nav a.active {
+  color: #039be5;
+}
