@@ -77,6 +77,22 @@ getTimes(): void{
 
   this.times = selected[keys[0]];
 
+  let keyshour =  Object.keys(this.times);
+
+  keyshour.sort(function(a,b){
+    var arr_a = a.split(" ").map(function (val) { return Number(val); });
+    var arr_b = b.split(" ").map(function (val) { return Number(val); });
+  
+    return (arr_a[1]> arr_b[1]) ? 1 : ((arr_b[1] >arr_a[1]) ? -1 : 0);
+
+  })
+
+  var ordered = {}
+    for (let i = 0; i < keyshour.length; i++) {
+      ordered[keyshour[i]] = this.times[keyshour[i]];
+      }
+  this.times = ordered
+
 }
 
 getHoursHeader():void{
@@ -106,6 +122,10 @@ getHoursHeader():void{
   goBack(): void {
     this.location.back();
   }
+
+  asIsOrder(a, b) {
+  return 1;
+}
 
 
 
