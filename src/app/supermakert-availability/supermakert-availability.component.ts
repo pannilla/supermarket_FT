@@ -32,7 +32,8 @@ export class SupermakertAvailabilityComponent implements OnInit {
 
   ngOnInit() {
     this.getSuperMarket()
-    this.firebaseService.getAvailability()
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.firebaseService.getSuperAv(id)
       .subscribe(result => {
     this.items = result;
     this.getTimes();
@@ -59,23 +60,16 @@ getTimes(): void{
 
   
   let keys_test = Object.keys(destinationObj);
+
   let supermarkets= [];
   let keys = [];
 
-  for (let prop of keys_test) { 
-      supermarkets.push(destinationObj[prop]);
-  }
+  
+  selected = destinationObj['0'].value;
+  keys = Object.keys(selected);
+    
 
-  for (let market of supermarkets){
-    if (market.key == id.toString()){
-      selected = market.value;
-      keys = Object.keys(selected);
-    }
-
-  }
-
-
-  this.times = selected[keys[0]];
+  this.times = selected;
 
   let keyshour =  Object.keys(this.times);
 

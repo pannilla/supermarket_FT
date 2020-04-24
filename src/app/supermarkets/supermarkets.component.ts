@@ -27,7 +27,6 @@ export class SupermarketsComponent implements OnInit {
   }
 
   onSelect(supermarket: SuperMarket): void {
-    this.messageService.add(`SuperMarketService: Selected supermarket id=${supermarket.id}`);
     this.selectedSuperMarket = supermarket;
   }
 
