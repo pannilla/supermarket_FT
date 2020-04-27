@@ -76,12 +76,22 @@ getTimes(): void{
   keyshour.sort(function(a,b){
     var arr_a = a.split(" ")
     var sec = arr_a[1]
+    if (sec.length <2){
+      sec = '0'+ sec
+    }
+
     var n_a, n_b
-    sec.substr(0,1)=='0'? n_a = Number('4' + arr_a[1].substr(1,1)) : n_a = Number(arr_a[1])
-   
+     
+    sec.substr(0,1)=='0' ? n_a = Number('4' + sec.substr(1,1)) : n_a = Number(sec)
+
     var arr_b = b.split(" ")
     var sec_b = arr_b[1]
-    sec_b.substr(0,1)=='0'? n_b = Number('4' + arr_b[1].substr(1,1)) : Number(n_b = arr_b[1])
+    if (sec_b.length <2){
+      sec_b = '0'+ sec_b
+    }
+      
+  
+    sec_b.substr(0,1)=='0' ? n_b = Number('4' + sec_b.substr(1,1)) : n_b = Number(sec_b)
   
     return (n_a < n_b) ? -1 : (n_a > n_b) ? 1 : 0
 
