@@ -24,7 +24,7 @@
              <tr *ngFor = "let ora of times[single.key] | mapToIterable:'value'">
 
                   <ng-container
-      *ngIf="(ora | mapToIterable:'value') == 'N'; then userloggedIn; else userloggedOut">
+      *ngIf="(ora | mapToIterable:'value') != 'S'; then userloggedIn; else userloggedOut">
     </ng-container>
 
     <ng-template #userloggedIn>
