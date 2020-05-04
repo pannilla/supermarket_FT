@@ -63,6 +63,7 @@ getTimes(): void{
 
   let supermarkets= [];
   let keys = [];
+  var splited : string [] = [];
 
   
   selected = destinationObj['0'].value;
@@ -73,6 +74,19 @@ getTimes(): void{
 
   let keyshour =  Object.keys(this.times);
 
+
+  function isBigEnough(element) {
+  return Number(element) >= 30;
+  }
+
+  
+  keyshour.forEach(a => {a = a.split(" ")[1];
+  splited.push(a)}
+  )
+
+  var find_e : string = ""
+  find_e = splited.find(isBigEnough)
+  
   keyshour.sort(function(a,b){
     var arr_a = a.split(" ")
     var sec = arr_a[1]
@@ -82,7 +96,7 @@ getTimes(): void{
 
     var n_a, n_b
      
-    sec.substr(0,1)=='0' ? n_a = Number('4' + sec.substr(1,1)) : n_a = Number(sec)
+    sec.substr(0,1)=='0' && !(find_e == null)? n_a = Number('4' + sec.substr(1,1)) : n_a = Number(sec)
 
     var arr_b = b.split(" ")
     var sec_b = arr_b[1]
@@ -91,7 +105,7 @@ getTimes(): void{
     }
       
   
-    sec_b.substr(0,1)=='0' ? n_b = Number('4' + sec_b.substr(1,1)) : n_b = Number(sec_b)
+    sec_b.substr(0,1)=='0' && !(find_e == null) ? n_b = Number('4' + sec_b.substr(1,1)) : n_b = Number(sec_b)
   
     return (n_a < n_b) ? -1 : (n_a > n_b) ? 1 : 0
 
@@ -104,8 +118,9 @@ getTimes(): void{
       }
   this.times = ordered
 
-
 }
+
+
 
 getHoursHeader():void{
   let keyshour =  Object.keys(this.times);
